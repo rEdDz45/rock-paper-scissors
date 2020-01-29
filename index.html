@@ -1,0 +1,35 @@
+<script>
+  const computerPlay = () => {
+    let randNumber = Math.round(Math.random() * 3);
+    const pcPick = ["rock", "paper", "scissors"];
+    return pcPick[randNumber];
+  };
+
+  function playRound(playerSelection, computerSelection) {
+    switch (playerSelection + computerSelection) {
+      case "rockscissors":
+      case "paperrock":
+      case "scissorspaper":
+        return "You Wins!";
+        break;
+      case "rockpaper":
+      case "paperscissors":
+      case "scissorsrock":
+        return "You Lose!";
+        break;
+      case "rockrock":
+      case "paperpaper":
+      case "scissorsscissors":
+        return "Its a Tie";
+        break;
+    }
+  }
+  let playerPick = prompt("Pick rock, paper or scissors");
+  playerPick = playerPick.toLowerCase();
+  const playerSelection = playerPick;
+  const computerSelection = computerPlay();
+  alert(
+    "Computer picked " + computerSelection + " You picked " + playerSelection
+  );
+  alert(playRound(playerSelection, computerSelection));
+</script>
