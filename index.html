@@ -24,7 +24,8 @@
         break;
     }
   }
-  let playerPick = prompt("Pick rock, paper or scissors by typing it.");
+  let playerPick = prompt("Pick rock, paper or scissors");
+  playerPick = playerPick.toLowerCase();
   const playerSelection = playerPick;
   const computerSelection = computerPlay();
   alert(
