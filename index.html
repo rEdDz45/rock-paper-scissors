@@ -1,35 +1,64 @@
 <script>
-  const computerPlay = () => {
-    let randNumber = Math.round(Math.random() * 3);
-    const pcPick = ["rock", "paper", "scissors"];
-    return pcPick[randNumber];
-  };
+  let numOfGame = 1;
+  numOfGame = prompt("Insert a number of times you want to play.");
+  let x = 0;
+  let userScore = 0;
+  let computerScore = 0;
+  while (x != numOfGame) {
+    //function: computer pick
+    const computerPlay = () => {
+      let pcPick = Math.random() * 3;
+      pcPick = Math.floor(pcPick);
 
-  function playRound(playerSelection, computerSelection) {
-    switch (playerSelection + computerSelection) {
-      case "rockscissors":
-      case "paperrock":
-      case "scissorspaper":
-        return "You Wins!";
-        break;
-      case "rockpaper":
-      case "paperscissors":
-      case "scissorsrock":
-        return "You Lose!";
-        break;
-      case "rockrock":
-      case "paperpaper":
-      case "scissorsscissors":
-        return "Its a Tie";
-        break;
+      const rps = ["rock", "paper", "scissors"];
+      return rps[pcPick];
+    };
+
+    //function: user pick
+    const userPlay = () => {
+      userPick = prompt("Pick one by typing: Rock, Paper, or Scissors.");
+      return userPick.toLowerCase();
+    };
+
+    const score = () => {
+      return (
+        "Player point: " + userScore + "\nComputer point: " + computerScore
+      );
+    };
+
+    //function: user vs computer
+    function playRound(playerSelection, computerSelection) {
+      switch (playerSelection + computerSelection) {
+        case "rockscissors":
+        case "paperrock":
+        case "scissorspaper":
+          userScore++;
+          return (
+            "Computer picked " + computerSelection + "\nYou win!\n" + score()
+          );
+          break;
+        case "rockpaper":
+        case "paperscissors":
+        case "scissorsrock":
+          computerScore++;
+          return (
+            "Computer picked " + computerSelection + "\nYou lose!\n" + score()
+          );
+          break;
+        case "rockrock":
+        case "paperpaper":
+        case "scissorsscissors":
+          return (
+            "Computer picked " + computerSelection + "\nIt's a tie!\n" + score()
+          );
+          break;
+      }
     }
+
+    const playerSelection = userPlay();
+    const computerSelection = computerPlay();
+
+    alert(playRound(playerSelection, computerSelection));
+    x++;
   }
-  let playerPick = prompt("Pick rock, paper or scissors");
-  playerPick = playerPick.toLowerCase();
-  const playerSelection = playerPick;
-  const computerSelection = computerPlay();
-  alert(
-    "Computer picked " + computerSelection + " You picked " + playerSelection
-  );
-  alert(playRound(playerSelection, computerSelection));
 </script>
