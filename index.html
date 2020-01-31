@@ -61,4 +61,12 @@
     alert(playRound(playerSelection, computerSelection));
     x++;
   }
+
+  if (userScore == computerScore) {
+    alert("Game set: It's a tie!");
+  } else if (userScore > computerScore) {
+    alert("Game set: You win!");
+  } else if (userScore < computerScore) {
+    alert("Game set: You lose!");
+  }
 </script>
